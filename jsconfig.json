@@ -10,7 +10,6 @@
       "Layouts/*": ["./src/layouts/*"],
       "Pages/*": ["./src/pages/*"],
       "Utils/*": ["./src/utils/*"],
-      "Domain/*": ["./src/domain/*"],
       "Config/*": ["./config/*"],
     },
     "allowSyntheticDefaultImports": true

@@ -1,5 +1,6 @@
 const Path = require('path');
 const Webpack = require('webpack');
+const shortid = require('shortid');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -24,10 +25,6 @@ module.exports = {
         {
           from: Path.join(__dirname, '../src/static'),
           to: Path.join(__dirname, '../build/src/static'),
-        },
-        {
-          from: Path.join(__dirname, '../src/static/.well-known'),
-          to: Path.join(__dirname, '../build/.well-known'),
         },
       ],
     }),
@@ -59,10 +56,8 @@ module.exports = {
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-
-            return `npm.${packageName.replace('@', '')}`;
+          name() {
+            return shortid.generate();
           },
         },
         styles: {

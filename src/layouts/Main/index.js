@@ -1,12 +1,8 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { createStructuredSelector } from 'reselect';
 
 import Navigation from 'Components/Navigation';
 
-import { selectLocale } from 'Containers/LanguageProvider/selector';
 import classes from './style.scss';
 
 const propTypes = {
@@ -25,10 +21,4 @@ const MainLayout = ({ children, hideNav }) => {
 
 MainLayout.propTypes = propTypes;
 
-const mapStateToProps = createStructuredSelector({
-  selectedLocale: selectLocale,
-});
-
-const withConnect = connect(mapStateToProps);
-
-export default compose(withConnect, memo)(MainLayout);
+export default memo(MainLayout);

@@ -1,32 +1,24 @@
-import React, { useEffect, memo } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
-import { connect, useDispatch } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 
-import { useInjectSaga } from 'Utils/injectSaga';
-import { loadTranslation } from './actions';
-import saga from './saga';
+import { DEFAULT_LOCALE } from '../../utils/constants';
+import idLocaleData from '../../i18n/id';
+import enLocaleData from '../../i18n/en';
+
+const messages = {
+  id: { ...idLocaleData },
+  en: { ...enLocaleData },
+};
 
 const propTypes = {
-  locale: PropTypes.string.isRequired,
-  messages: PropTypes.instanceOf(Object).isRequired,
+  locale: PropTypes.string,
   children: PropTypes.element.isRequired,
 };
 
-const key = 'language';
-
-const LanguageProvider = ({ locale, messages, children }) => {
-  useInjectSaga({ key, saga });
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadTranslation());
-  }, []);
-
+const LanguageProvider = ({ locale, children }) => {
   return (
-    <IntlProvider key={locale} locale={locale} messages={messages[locale]}>
+    <IntlProvider key={locale} locale={locale} messages={messages[DEFAULT_LOCALE]}>
       {React.Children.only(children)}
     </IntlProvider>
   );
@@ -34,11 +26,8 @@ const LanguageProvider = ({ locale, messages, children }) => {
 
 LanguageProvider.propTypes = propTypes;
 
-const mapStateToProps = (state) => ({
-  locale: state.language.locale,
-  messages: state.language.messages,
-});
+LanguageProvider.defaultProps = {
+  locale: 'id',
+};
 
-const withConnect = connect(mapStateToProps);
-
-export default compose(withConnect, memo)(LanguageProvider);
+export default memo(LanguageProvider);

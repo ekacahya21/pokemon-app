@@ -88,7 +88,6 @@ module.exports = {
       Layouts: Path.resolve(__dirname, '../src/layouts'),
       Pages: Path.resolve(__dirname, '../src/pages'),
       Utils: Path.resolve(__dirname, '../src/utils'),
-      Domain: Path.resolve(__dirname, '../src/domain'),
       Config: Path.resolve(__dirname, '../config'),
     },
   },

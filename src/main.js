@@ -1,27 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ConnectedRouter } from 'connected-react-router';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+import { Router } from 'react-router-dom';
 
 import LanguageProvider from 'Containers/LanguageProvider';
 import AppContainer from 'Containers/App';
-import history from 'Utils/history';
-import store, { persistor } from './configureStore';
+import history from './utils/history';
 
 const MOUNT_NODE = document.getElementById('app');
 
 const render = () => {
   ReactDOM.render(
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <LanguageProvider>
-          <ConnectedRouter history={history}>
-            <AppContainer />
-          </ConnectedRouter>
-        </LanguageProvider>
-      </PersistGate>
-    </Provider>,
+    <LanguageProvider>
+      <Router history={history}>
+        <AppContainer />
+      </Router>
+    </LanguageProvider>,
     MOUNT_NODE
   );
 };
