@@ -1,0 +1,35 @@
+@import 'colors';
+
+@mixin shadow-1 {
+  box-shadow: 0px 4px 8px rgba(25, 49, 83, 0.2) !important;
+}
+
+@mixin btn {
+  @include shadow-1;
+  font-family: NunitoBold;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  outline: 0;
+  border: 0;
+  border-radius: 0.7rem;
+  cursor: pointer;
+}
+
+@mixin directionY {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+@mixin directionX {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+@mixin container {
+  width: 100%;
+
+  @include apply-at-xl-size {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

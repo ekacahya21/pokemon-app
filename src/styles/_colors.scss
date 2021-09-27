@@ -1,0 +1,14 @@
+@function shade($color, $percentage) {
+  @return mix(#000, $color, $percentage);
+}
+
+/* COLOR PALLETE */
+$color-black: #001122;
+$color-white: #fff;
+$color-dark-grey: #33414e;
+$color-dark-blue: #0f2236;
+$color-red: #ff1a1a;
+$color-red-corsa: #d60909;
+$color-carchoal: #3e5054;
+$color-cadet-grey: #80949b;
+$color-cultured: #f3f4f5;

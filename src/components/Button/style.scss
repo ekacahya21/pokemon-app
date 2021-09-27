@@ -1,0 +1,33 @@
+@import '../../styles/base';
+
+@mixin ripple($ripple-color, $background-color) {
+  background-position: center;
+  transition: background 0.8s;
+
+  &:hover {
+    background: $ripple-color radial-gradient(circle, transparent 1%, $background-color 1%) center/15000%;
+  }
+
+  &:active {
+    background-color: $ripple-color;
+    background-size: 100%;
+    transition: background 0s;
+  }
+}
+
+.primary {
+  @include btn;
+  color: $color-white;
+  background-color: $color-red;
+
+  @include ripple($color-red-corsa, $color-red);
+}
+
+.secondary {
+  @include btn;
+  color: $color-black;
+  border: 2px solid $color-red;
+  background-color: $color-white;
+
+  @include ripple($color-cultured, $color-white);
+}

@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "baseUrl": ".",
+    "jsx": "react",
+    "paths": {
+      "Components/*": ["./src/components/*"],
+      "Containers/*": ["./src/containers/*"],
+      "Layouts/*": ["./src/layouts/*"],
+      "Pages/*": ["./src/pages/*"],
+      "Utils/*": ["./src/utils/*"],
+      "Domain/*": ["./src/domain/*"],
+      "Config/*": ["./config/*"],
+    },
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
+}

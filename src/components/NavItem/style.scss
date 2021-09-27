@@ -1,0 +1,24 @@
+@import '../../styles/base';
+
+.itemWrapper {
+  @include shadow-1;
+  cursor: pointer;
+  height: fit-content;
+  margin: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+
+  img {
+    transition: width 0.2s, height 0.2s;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.selected {
+  img {
+    transition: width 0.2s, height 0.2s;
+    width: 64px;
+    height: 64px;
+  }
+}
