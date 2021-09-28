@@ -10,7 +10,7 @@ const propTypes = {
   iconStyle: PropTypes.string,
   onClick: PropTypes.func,
   size: PropTypes.string,
-  disabled: PropTypes.string,
+  disabled: PropTypes.bool,
   className: PropTypes.string,
 };
 

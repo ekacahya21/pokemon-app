@@ -4,4 +4,31 @@
   @include container;
   box-sizing: border-box;
   padding: 2rem;
+
+  .header {
+    .title {
+      @include contentHeader2;
+    }
+
+    .subtitle {
+      @include body;
+      margin-top: 1rem;
+    }
+  }
+
+  .pokemonList {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 1.5rem;
+
+    @include apply-at-md-size {
+      grid-template-columns: repeat(auto-fit, minmax(33.33%, 1fr));
+    }
+
+    @include apply-at-xl-size {
+      grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+    }
+  }
 }

@@ -2,6 +2,7 @@ import React, { memo, useContext, useEffect } from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import { ToastContainer } from 'react-toastify';
+import { setContext } from '@apollo/client/link/context';
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import '!style-loader!css-loader!react-toastify/dist/ReactToastify.css';
@@ -13,6 +14,7 @@ import LoginDialog from 'Components/LoginDialog';
 import { AppContext } from 'Utils/StoreProvider';
 import { setAuthModalMode, setAuthModal, setAuthenticated } from 'Utils/actions';
 import ClientRoutes from '../../routes';
+import config from '../../../config';
 import '../../styles/core.scss';
 
 const errorLink = onError(({ graphqlErrors }) => {
@@ -24,7 +26,17 @@ const errorLink = onError(({ graphqlErrors }) => {
   }
 });
 
-const link = from([errorLink, new HttpLink({ uri: 'http://localhost:9000/gql' })]);
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const link = from([authLink, errorLink, new HttpLink({ uri: config.api.host })]);
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -39,7 +51,7 @@ const App = () => {
     if (token && !state.isAuthenticated) {
       dispatch(setAuthenticated(true, token));
     }
-  }, [state]);
+  });
 
   const setAuthMode = (mode) => () => {
     dispatch(setAuthModalMode(mode));
@@ -52,8 +64,8 @@ const App = () => {
   return (
     <ApolloProvider client={client}>
       <ClientRoutes />
-      <Navigation authenticated={false} />
-      <ToastContainer />
+      <Navigation />
+      <ToastContainer autoClose={3000} />
       <LoginDialog
         isOpen={state.authModalOpen && !state.isAuthenticated && state.authMode === 'login'}
         onSignup={setAuthMode('signup')}

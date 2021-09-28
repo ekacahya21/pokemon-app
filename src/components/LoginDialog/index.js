@@ -9,7 +9,6 @@ import Button from 'Components/Button';
 import TextInput from 'Components/TextInput';
 
 import { AppContext } from 'Utils/StoreProvider';
-import { setAuthenticated } from 'Utils/actions';
 import { LOGIN_USER } from '../../graphQL/queries';
 import classes from './style.scss';
 
@@ -21,7 +20,7 @@ const propTypes = {
 };
 
 const LoginDialog = ({ isOpen, onSignup, onClose, intl: { formatMessage } }) => {
-  const [state, dispatch] = useContext(AppContext);
+  const [state] = useContext(AppContext);
   const [login, { error, data, loading }] = useLazyQuery(LOGIN_USER);
 
   const userIDEl = useRef(null);
@@ -30,8 +29,7 @@ const LoginDialog = ({ isOpen, onSignup, onClose, intl: { formatMessage } }) => 
   useEffect(() => {
     if (data && data.login && !state.isAuthenticated) {
       localStorage.setItem('token', data.login.token);
-      dispatch(setAuthenticated(true, data.login.token));
-      toast.success(formatMessage({ id: 'login_successful' }), { position: 'top-right', hideProgressBar: true });
+      window.location.reload(false);
     }
   }, [data]);
 
@@ -48,7 +46,10 @@ const LoginDialog = ({ isOpen, onSignup, onClose, intl: { formatMessage } }) => 
   };
 
   if (error) {
-    toast.error(error.message, { position: 'bottom-center', hideProgressBar: true });
+    toast.error(error.message, {
+      position: 'bottom-center',
+      hideProgressBar: true,
+    });
   }
 
   return (

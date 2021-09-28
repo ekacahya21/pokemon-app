@@ -1,0 +1,37 @@
+@import '../../styles/base';
+
+.pokemonWrapper {
+  padding: 1.5rem;
+
+  @include apply-at-md-size {
+    padding: 2rem;
+  }
+
+  .header {
+    .nickname {
+      @include contentHeader4;
+    }
+
+    .originalname {
+      @include bodySmall;
+    }
+  }
+
+  .detail {
+    margin-top: 2rem;
+
+    .image {
+      @include directionX;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        max-height: 85px;
+      }
+    }
+
+    .ability {
+      margin-top: 1.5rem;
+    }
+  }
+}

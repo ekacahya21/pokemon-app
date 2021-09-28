@@ -19,4 +19,7 @@ export default {
   mypokemon_unauthorized_title: 'Unauthorized',
   mypokemon_unauthorized_info:
     'Silakan masuk untuk dapat melihat koleksi pokemon anda, atau daftar jika belum memiliki akun.',
+  mypokemon_header_subtitle: 'Koleksi pokemon sebanyak-banyaknya dan bersaing dengan pemain lain!',
+  pokemon_ability: 'Kemampuan:',
+  pokemon_original_name: 'Nama asli:',
 };

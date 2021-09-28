@@ -18,3 +18,25 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const GET_PROFILE = gql`
+  query getProfile {
+    getProfile {
+      _id
+      email
+      username
+      catchedPokemons {
+        refId
+        nickname
+        detail {
+          name
+          abilities {
+            ability {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+`;

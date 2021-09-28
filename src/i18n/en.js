@@ -19,4 +19,7 @@ export default {
   mypokemon_unauthorized_title: 'Unauthorized',
   mypokemon_unauthorized_info:
     "Please login to be able to see your Pokemon collection, or register if you don't have an account.",
+  mypokemon_header_subtitle: 'Collect as many pokemon as possible and compete with other players!',
+  pokemon_ability: 'Abilities:',
+  pokemon_original_name: 'Original name:',
 };
