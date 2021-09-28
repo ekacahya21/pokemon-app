@@ -1,0 +1,7 @@
+@import '../../styles/base';
+
+.cardWrapper {
+  @include shadow-3;
+  border-radius: 0.5rem;
+  padding: 2rem;
+}

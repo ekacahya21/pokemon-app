@@ -1,5 +1,4 @@
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
+import React, { memo, useContext, useEffect } from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import { ToastContainer } from 'react-toastify';
@@ -8,15 +7,13 @@ import { ToastContainer } from 'react-toastify';
 import '!style-loader!css-loader!react-toastify/dist/ReactToastify.css';
 
 import Navigation from 'Components/Navigation';
-import Loader from 'Components/Loader';
+import SignupDialog from 'Components/SignupDialog';
+import LoginDialog from 'Components/LoginDialog';
 
-import AppContext from 'src/contexts/app-context';
+import { AppContext } from 'Utils/StoreProvider';
+import { setAuthModalMode, setAuthModal, setAuthenticated } from 'Utils/actions';
 import ClientRoutes from '../../routes';
 import '../../styles/core.scss';
-
-const propTypes = {
-  isLoading: PropTypes.bool,
-};
 
 const errorLink = onError(({ graphqlErrors }) => {
   if (graphqlErrors) {
@@ -34,23 +31,41 @@ const client = new ApolloClient({
   link,
 });
 
-const App = ({ isLoading }) => {
+const App = () => {
+  const [state, dispatch] = useContext(AppContext);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token && !state.isAuthenticated) {
+      dispatch(setAuthenticated(true, token));
+    }
+  }, [state]);
+
+  const setAuthMode = (mode) => () => {
+    dispatch(setAuthModalMode(mode));
+  };
+
+  const setAuthModalOpen = (openState) => () => {
+    dispatch(setAuthModal(openState));
+  };
+
   return (
     <ApolloProvider client={client}>
-      <AppContext.Provider>
-        <ClientRoutes />
-        <Loader isLoading={isLoading} />
-        <Navigation authenticated={false} />
-        <ToastContainer />
-      </AppContext.Provider>
+      <ClientRoutes />
+      <Navigation authenticated={false} />
+      <ToastContainer />
+      <LoginDialog
+        isOpen={state.authModalOpen && !state.isAuthenticated && state.authMode === 'login'}
+        onSignup={setAuthMode('signup')}
+        onClose={setAuthModalOpen(false)}
+      />
+      <SignupDialog
+        isOpen={state.authModalOpen && !state.isAuthenticated && state.authMode === 'signup'}
+        onLogin={setAuthMode('login')}
+        onClose={setAuthModalOpen(false)}
+      />
     </ApolloProvider>
   );
-};
-
-App.propTypes = propTypes;
-
-App.defaultProps = {
-  isLoading: false,
 };
 
 export default memo(App);

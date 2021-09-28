@@ -1,0 +1,37 @@
+@import '../../styles/base';
+
+.unauthorizedWrapper {
+  @include container;
+  @include directionY;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  .imageWrapper {
+    @include directionX;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 150px;
+    }
+  }
+
+  .infoWrapper {
+    @include directionY;
+    padding: 2rem 8rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .title,
+    .actionWrapper,
+    .content {
+      margin-top: 1.5rem;
+    }
+
+    .title {
+      @include contentHeader4;
+    }
+  }
+}

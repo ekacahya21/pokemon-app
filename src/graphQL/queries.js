@@ -9,3 +9,12 @@ export const GET_USERS = gql`
     }
   }
 `;
+
+export const LOGIN_USER = gql`
+  query login($userID: String!, $password: String!) {
+    login(userID: $userID, password: $password) {
+      token
+      expiredAt
+    }
+  }
+`;

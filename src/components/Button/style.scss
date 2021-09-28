@@ -32,3 +32,12 @@
 
   @include ripple($color-cultured, $color-white);
 }
+
+.disabled {
+  background-color: $color-cadet-grey;
+  color: $color-black;
+  opacity: 0.65;
+  cursor: not-allowed;
+
+  @include ripple($color-cadet-grey, $color-cadet-grey);
+}

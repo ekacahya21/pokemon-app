@@ -1,1 +1,7 @@
 @import '../../styles/base';
+
+.myPokemonWrapper {
+  @include container;
+  box-sizing: border-box;
+  padding: 2rem;
+}

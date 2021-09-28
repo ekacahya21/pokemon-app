@@ -14,9 +14,11 @@ import classes from './style.scss';
 const propTypes = {
   intl: PropTypes.object,
   isOpen: PropTypes.bool,
+  onLogin: PropTypes.func,
+  onClose: PropTypes.func,
 };
 
-const SignupDialog = ({ isOpen, intl: { formatMessage } }) => {
+const SignupDialog = ({ isOpen, onLogin, onClose, intl: { formatMessage } }) => {
   const [signUp, { error, data }] = useMutation(SIGNUP_USER);
   const emailEl = useRef(null);
   const usernameEl = useRef(null);
@@ -56,7 +58,7 @@ const SignupDialog = ({ isOpen, intl: { formatMessage } }) => {
   }
 
   return (
-    <Modal isOpen={isOpen}>
+    <Modal isOpen={isOpen} handleClose={onClose}>
       <form onSubmit={handleSignup}>
         <div className={classes.title}>
           <strong>
@@ -88,7 +90,7 @@ const SignupDialog = ({ isOpen, intl: { formatMessage } }) => {
           <div className={classes.guideSignup}>
             <FormattedMessage id="signup_guide_text" />
           </div>
-          <Button label="login_button" variant="secondary" onClick={() => {}} />
+          <Button label="login_button" variant="secondary" onClick={onLogin} />
         </div>
       </form>
     </Modal>

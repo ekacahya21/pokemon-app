@@ -4,17 +4,21 @@ import { Router } from 'react-router-dom';
 
 import LanguageProvider from 'Components/LanguageProvider';
 import AppContainer from 'Components/App';
+import StoreProvider from 'Utils/StoreProvider';
+
 import history from './utils/history';
 
 const MOUNT_NODE = document.getElementById('app');
 
 const render = () => {
   ReactDOM.render(
-    <LanguageProvider>
-      <Router history={history}>
-        <AppContainer />
-      </Router>
-    </LanguageProvider>,
+    <StoreProvider>
+      <LanguageProvider>
+        <Router history={history}>
+          <AppContainer />
+        </Router>
+      </LanguageProvider>
+    </StoreProvider>,
     MOUNT_NODE
   );
 };

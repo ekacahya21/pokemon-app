@@ -8,6 +8,7 @@ export default {
   login_id_placeholder: 'Input your email or username',
   login_password_placeholder: 'Input your password',
   login_button: 'Login',
+  login_successful: 'Login successful',
   login_guide_text: 'Already registered?',
   signup_title: "Let's signup!",
   signup_email_placeholder: 'Input email',
@@ -15,4 +16,7 @@ export default {
   signup_password_placeholder: 'Choose your password ',
   signup_button: 'Signup',
   signup_guide_text: "Don't have account yet?",
+  mypokemon_unauthorized_title: 'Unauthorized',
+  mypokemon_unauthorized_info:
+    "Please login to be able to see your Pokemon collection, or register if you don't have an account.",
 };

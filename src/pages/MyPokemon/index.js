@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 
-import SignupDialog from 'Components/SignupDialog';
+import Unauthorized from 'Components/Unauthorized';
+
+import { AppContext } from 'Utils/StoreProvider';
+import { setAuthModal } from 'Utils/actions';
+
+import classes from './style.scss';
 
 const MyPokemon = () => {
-  return (
-    <div>
-      <h1>This is myPokemon page</h1>
-      <SignupDialog isOpen />
+  const [state, dispatch] = useContext(AppContext);
+
+  useEffect(() => {
+    if (!state.isAuthenticated) {
+      dispatch(setAuthModal(true));
+    }
+  }, []);
+
+  return !state.isAuthenticated ? (
+    <Unauthorized />
+  ) : (
+    <div className={classes.myPokemonWrapper}>
+      <h1>Hi from mypokemon page</h1>
     </div>
   );
 };
