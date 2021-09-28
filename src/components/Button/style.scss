@@ -26,6 +26,7 @@
 .secondary {
   @include btn;
   color: $color-black;
+  padding: 0.8rem 2rem;
   border: 2px solid $color-red;
   background-color: $color-white;
 

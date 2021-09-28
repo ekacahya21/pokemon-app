@@ -1,0 +1,29 @@
+@import '../../styles/base';
+
+.title {
+  @include contentHeader3;
+}
+
+.content {
+  @include body;
+
+  .inputField {
+    margin-top: 1.5rem;
+  }
+}
+
+.action {
+  @include directionY;
+  margin-top: 0.5rem;
+  align-items: center;
+
+  .guideSignup {
+    @include bodySmall;
+    margin-top: 1.3rem;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 1.3rem;
+  }
+}

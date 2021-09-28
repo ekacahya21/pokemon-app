@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router } from 'react-router-dom';
 
-import LanguageProvider from 'Containers/LanguageProvider';
-import AppContainer from 'Containers/App';
+import LanguageProvider from 'Components/LanguageProvider';
+import AppContainer from 'Components/App';
 import history from './utils/history';
 
 const MOUNT_NODE = document.getElementById('app');
@@ -33,7 +33,7 @@ if (!window.Intl) {
 }
 
 if (module.hot) {
-  module.hot.accept('./containers/App', () => {
+  module.hot.accept('./components/App', () => {
     ReactDOM.unmountComponentAtNode(MOUNT_NODE);
     render();
   });

@@ -1,0 +1,52 @@
+@import '../../styles/base';
+
+.modalOverlay {
+  @include directionX;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  position: fixed;
+  overflow: auto;
+  background-color: $color-blue-transparent !important;
+  background-color: $color-carchoal;
+}
+
+.modalContent {
+  position: relative;
+  overflow: auto;
+  outline: none;
+  padding: 2.5rem;
+  border-radius: 0.5rem;
+  background: $color-white;
+  min-width: 75%;
+
+  @include apply-at-md-size {
+    min-width: 40%;
+  }
+
+  @include apply-at-lg-size {
+    min-width: 30%;
+  }
+
+  @include apply-at-xl-size {
+    min-width: 25%;
+  }
+
+  .closeBtn {
+    right: 1rem;
+    top: 1rem;
+    cursor: pointer;
+    position: absolute;
+
+    .closeIcon {
+      img {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+}

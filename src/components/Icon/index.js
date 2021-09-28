@@ -9,7 +9,7 @@ const propTypes = {
 };
 
 const Icon = ({ className, name }) => {
-  const imagePath = `/src/static/images/icons/${name}.png`;
+  const imagePath = `/src/static/images/vector/${name}.svg`;
 
   return (
     <div className={`${classes.icon} ${className || ''}`}>

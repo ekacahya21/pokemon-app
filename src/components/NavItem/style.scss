@@ -1,7 +1,10 @@
 @import '../../styles/base';
 
 .itemWrapper {
+  @include directionY;
   @include shadow-1;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   height: fit-content;
   margin: 1.5rem;
@@ -9,16 +12,21 @@
   border-radius: 1.5rem;
 
   img {
-    transition: width 0.2s, height 0.2s;
     width: 32px;
     height: 32px;
+    transition: width 0.2s, height 0.2s;
   }
 }
 
 .selected {
   img {
+    width: 45px;
+    height: 45px;
     transition: width 0.2s, height 0.2s;
-    width: 64px;
-    height: 64px;
+
+    @include apply-at-xl-size {
+      width: 64px;
+      height: 64px;
+    }
   }
 }

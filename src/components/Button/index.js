@@ -8,7 +8,7 @@ const propTypes = {
   label: PropTypes.string.isRequired,
   icon: PropTypes.string,
   iconStyle: PropTypes.string,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   size: PropTypes.string,
 };
 

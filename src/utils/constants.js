@@ -14,5 +14,6 @@ export const NAVIGATION_MENU = [
     label: 'My Pokemon',
     image: '/src/static/images/vector/backpack.svg',
     path: '/my-pokemon',
+    protected: true,
   },
 ];
