@@ -24,6 +24,9 @@ export default {
   mypokemon_unauthorized_info:
     "Please login to be able to see your Pokemon collection, or register if you don't have an account.",
   mypokemon_header_subtitle: 'Collect as many pokemon as possible and compete with other players!',
+  mypokemon_release_confirm: 'Are you sure want to release your pokemon?',
+  mypokemon_release_success: 'Pokemon released!',
+  mypokemon_release_button_cancel: 'Cancel',
   pokemon_ability: 'Abilities:',
   pokemon_original_name: 'Original name:',
   pokemon_release_button_label: 'Release',
@@ -31,10 +34,11 @@ export default {
   browse_pokemon_subtitle: "Let's catch and collect as many pokemon as possible, and compete with other players!",
   browse_pokemon_catch: 'Catch!',
   browse_pokemon_detail: 'Detail',
+  browse_pokemon_unauthorized: 'Oops, you need to login first to get started!',
   browse_pokemon_catch_success: 'Pokemon catched!',
-  browse_pokemon_catch_failed: 'Oops, failed to catch pokemon!',
+  browse_pokemon_catch_failed: "Oops, failed to catch pokemon, let's try again!",
   browse_pokemon_save_success: 'Pokemon saved!',
-  catch_pokemon_title: 'Give your pokemon a nickname!',
+  catch_pokemon_title: "Let's give your pokemon a nickname!",
   catch_pokemon_placeholder: 'Pick pokemon nickname',
   catch_pokemon_save: 'Save',
 };

@@ -39,7 +39,21 @@ const authLink = setContext((_, { headers }) => {
 const link = from([authLink, errorLink, new HttpLink({ uri: config.api.host })]);
 
 const client = new ApolloClient({
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          pokemons: {
+            keyArgs: false,
+            merge(existing = [], incoming) {
+              return [...existing, ...incoming];
+            },
+          },
+        },
+      },
+    },
+  }),
+  connectToDevTools: true,
   link,
 });
 

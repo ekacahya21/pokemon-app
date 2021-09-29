@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLazyQuery } from '@apollo/client';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -8,7 +8,11 @@ import Loader from 'Components/Loader';
 import PokemonCard from 'Components/PokemonCard';
 import PokemonPageError from 'Components/PokemonPageError';
 import CatchPokemonModal from 'Components/CatchPokemonModal';
+import Card from 'Components/Card';
+import Icon from 'Components/Icon';
 
+import { AppContext } from 'Utils/StoreProvider';
+import { setAuthModal } from 'Utils/actions';
 import { FETCH_POKEMONS } from '../../graphQL/queries';
 import classes from './style.scss';
 
@@ -17,13 +21,19 @@ const propTypes = {
 };
 
 const Browse = ({ intl: { formatMessage } }) => {
+  const [state, dispatch] = useContext(AppContext);
   const [pokemonList, setPokemonList] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState({});
   const [isCatching, setIsCatching] = useState(false);
   const [catchModalOpen, setCatchModalOpen] = useState(false);
-  const [pokemons, { error, data, loading }] = useLazyQuery(FETCH_POKEMONS);
+  const [pokemons, { error, data, loading, fetchMore }] = useLazyQuery(FETCH_POKEMONS);
 
   const handleCatch = (pokemonTarget) => {
+    if (!state.isAuthenticated) {
+      dispatch(setAuthModal(true));
+      toast.info(formatMessage({ id: 'browse_pokemon_unauthorized' }), { position: 'top-right' });
+      return false;
+    }
     setSelectedPokemon(pokemonTarget);
     setIsCatching(true);
     setTimeout(() => {
@@ -41,12 +51,16 @@ const Browse = ({ intl: { formatMessage } }) => {
     setCatchModalOpen(false);
   };
 
-  const getPokemons = (page, limit = 30) => {
-    pokemons({ variables: { page, limit } });
+  const getPokemons = (offset, limit = 30) => {
+    pokemons({ variables: { offset, limit } });
+  };
+
+  const handleLoadMore = () => {
+    fetchMore({ variables: { offset: data.pokemons.length } });
   };
 
   useEffect(() => {
-    getPokemons(1);
+    getPokemons();
   }, []);
 
   useEffect(() => {
@@ -78,6 +92,14 @@ const Browse = ({ intl: { formatMessage } }) => {
           <PokemonPageError variant="empty" />
         )}
       </div>
+      {pokemonList.length > 0 && (
+        <div className={classes.loadMore}>
+          <Card className={`${classes.loadBtn} ${loading ? classes.loading : ''}`} onClick={handleLoadMore}>
+            <Icon name="pokeballs" />
+            <strong>Load more</strong>
+          </Card>
+        </div>
+      )}
       <CatchPokemonModal isOpen={catchModalOpen} pokemon={selectedPokemon} onClose={closeCatchModal} />
       <Loader isLoading={loading || isCatching} transparent={isCatching} />
     </div>

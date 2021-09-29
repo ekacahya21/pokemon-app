@@ -6,6 +6,9 @@
   padding: 2rem;
 
   .header {
+    @include directionX;
+    justify-content: space-between;
+
     .title {
       @include contentHeader1;
     }
@@ -14,11 +17,23 @@
       @include body;
       margin-top: 1rem;
     }
+
+    .logout {
+      cursor: pointer;
+      margin-left: 2rem;
+      padding: 0.8rem;
+      height: fit-content;
+      @include ripple($color-cultured, $color-white);
+
+      div {
+        @include directionX;
+      }
+    }
   }
 
   .pokemonList {
     margin-top: 2rem;
-    margin-bottom: 12rem;
+    margin-bottom: 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
     grid-row-gap: 1.5rem;

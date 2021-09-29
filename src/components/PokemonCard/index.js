@@ -17,13 +17,14 @@ const propTypes = {
 };
 
 const PokemonCard = ({ pokemon, onSelectPokemon, isOwnedPokemon }) => {
-  const pokemonDetail = has(pokemon, 'detail') ? pokemon.detail : pokemon;
+  let pokemonDetail = has(pokemon, 'detail') ? pokemon.detail : pokemon;
 
   const handleSelectPokemon = () => {
+    if (has(pokemon, 'nickname') && has(pokemon, 'refId')) {
+      pokemonDetail = { ...pokemonDetail, nickname: pokemon.nickname, refId: pokemon.refId };
+    }
     onSelectPokemon(pokemonDetail);
   };
-
-  const handleRelease = () => {};
 
   return (
     <Card className={classes.pokemonWrapper}>
@@ -64,7 +65,7 @@ const PokemonCard = ({ pokemon, onSelectPokemon, isOwnedPokemon }) => {
           label={isOwnedPokemon ? 'pokemon_release_button_label' : 'browse_pokemon_catch'}
           variant="primary"
           className={classes.actionBtn}
-          onClick={isOwnedPokemon ? handleRelease : handleSelectPokemon}
+          onClick={handleSelectPokemon}
         />
         <Button label="browse_pokemon_detail" variant="secondary" className={classes.actionBtn} />
       </div>

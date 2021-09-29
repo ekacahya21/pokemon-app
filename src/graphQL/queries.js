@@ -26,6 +26,7 @@ export const GET_PROFILE = gql`
       email
       username
       catchedPokemons {
+        _id
         refId
         nickname
         detail {
@@ -42,8 +43,8 @@ export const GET_PROFILE = gql`
 `;
 
 export const FETCH_POKEMONS = gql`
-  query pokemons($page: Int!, $limit: Int) {
-    pokemons(page: $page, limit: $limit) {
+  query pokemons($offset: Int, $limit: Int) {
+    pokemons(offset: $offset, limit: $limit) {
       id
       name
       abilities {

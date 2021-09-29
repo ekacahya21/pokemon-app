@@ -7,6 +7,9 @@ import { isEmpty } from 'lodash';
 import PokemonCard from 'Components/PokemonCard';
 import PokemonPageError from 'Components/PokemonPageError';
 import Loader from 'Components/Loader';
+import CatchPokemonModal from 'Components/CatchPokemonModal';
+import Icon from 'Components/Icon';
+import Card from 'Components/Card';
 
 import { AppContext } from 'Utils/StoreProvider';
 import { setAuthModal } from 'Utils/actions';
@@ -17,6 +20,22 @@ const MyPokemon = () => {
   const [profileData, setProfileData] = useState({});
   const [state, dispatch] = useContext(AppContext);
   const [getProfile, { error, data, loading }] = useLazyQuery(GET_PROFILE);
+  const [selectedPokemon, setSelectedPokemon] = useState({});
+  const [catchModalOpen, setCatchModalOpen] = useState(false);
+
+  const handleRelease = (pokemonTarget) => {
+    setSelectedPokemon(pokemonTarget);
+    setCatchModalOpen(true);
+  };
+
+  const closeReleaseModal = () => {
+    setCatchModalOpen(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/browse';
+  };
 
   useEffect(() => {
     if (!state.isAuthenticated) {
@@ -45,20 +64,28 @@ const MyPokemon = () => {
   ) : (
     <div className={classes.myPokemonWrapper}>
       <div className={classes.header}>
-        <div className={classes.title}>
-          <strong>{`Hi, ${profileData.username}`}</strong>
+        <div>
+          <div className={classes.title}>
+            <strong>{`Hi, ${profileData.username}`}</strong>
+          </div>
+          <div className={classes.subtitle}>
+            <FormattedMessage id="mypokemon_header_subtitle" />
+          </div>
         </div>
-        <div className={classes.subtitle}>
-          <FormattedMessage id="mypokemon_header_subtitle" />
-        </div>
+        <Card className={classes.logout} onClick={handleLogout}>
+          <Icon name="logout" />
+        </Card>
       </div>
       <div className={classes.pokemonList}>
         {profileData.catchedPokemons && profileData.catchedPokemons.length > 0 ? (
-          profileData.catchedPokemons.map((pokemon, key) => <PokemonCard pokemon={pokemon} key={key} isOwnedPokemon />)
+          profileData.catchedPokemons.map((pokemon, key) => (
+            <PokemonCard pokemon={pokemon} key={key} isOwnedPokemon onSelectPokemon={handleRelease} />
+          ))
         ) : (
           <PokemonPageError variant="empty" />
         )}
       </div>
+      <CatchPokemonModal isOpen={catchModalOpen} pokemon={selectedPokemon} onClose={closeReleaseModal} isRelease />
     </div>
   );
 };

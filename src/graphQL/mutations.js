@@ -19,3 +19,12 @@ export const CATCH_POKEMON = gql`
     }
   }
 `;
+
+export const RELEASE_POKEMON = gql`
+  mutation releasePokemon($nickname: String!) {
+    releasePokemon(nickname: $nickname) {
+      nickname
+      refId
+    }
+  }
+`;

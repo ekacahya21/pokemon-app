@@ -20,7 +20,7 @@ const PokemonPageError = ({ variant }) => {
   };
 
   const goToBrowse = () => {
-    history.push('/');
+    history.push('/browse');
   };
 
   const state = {
