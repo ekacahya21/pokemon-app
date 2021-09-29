@@ -1,0 +1,33 @@
+@import '../../styles/base';
+
+.pokemonDetailWrapper {
+  @include container;
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 2rem;
+  margin-bottom: 10rem;
+
+  .header {
+    @include directionY;
+
+    .title {
+      @include contentHeader1;
+    }
+
+    .subtitle {
+      @include body;
+      margin-bottom: -0.7rem;
+    }
+  }
+
+  .content {
+    margin-top: 2rem;
+
+    .species,
+    .abilities,
+    .types,
+    .moves {
+      margin-top: 1.5rem;
+    }
+  }
+}

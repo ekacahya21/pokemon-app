@@ -1,6 +1,8 @@
 export default {
   /* GLOBAL */
   greeting: 'Selamat datang di Pokemon App',
+  general_somethingwrong_title: 'Error',
+  general_somethingwrong_text: 'Yah, terjadi kesalahan sistem!',
   not_found_title: 'Duh, kayaknya kamu kesasar!',
   not_found_text: 'Pulang yuk!',
   not_found_backtohome: 'Beranda',
@@ -27,7 +29,10 @@ export default {
   mypokemon_release_success: 'Pokemon berhasil dilepaskan!',
   mypokemon_release_confirm: 'Apakah anda yakin ingin melepaskan pokemon ini?',
   mypokemon_release_button_cancel: 'Batalkan',
-  pokemon_ability: 'Kemampuan:',
+  pokemon_species: 'Spesies',
+  pokemon_types: 'Tipe',
+  pokemon_moves: 'Gerakan',
+  pokemon_ability: 'Kemampuan',
   pokemon_original_name: 'Nama asli:',
   pokemon_release_button_label: 'Lepas',
   browse_pokemon_title: 'Ayo, tangkap Pokemon!',

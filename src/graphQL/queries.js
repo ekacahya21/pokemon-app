@@ -55,3 +55,30 @@ export const FETCH_POKEMONS = gql`
     }
   }
 `;
+
+export const POKEMON_SINGLE = gql`
+  query pokemonSingle($id: String!) {
+    pokemonSingle(id: $id) {
+      id
+      name
+      species {
+        name
+      }
+      types {
+        type {
+          name
+        }
+      }
+      abilities {
+        ability {
+          name
+        }
+      }
+      moves {
+        move {
+          name
+        }
+      }
+    }
+  }
+`;

@@ -38,6 +38,13 @@ const PokemonPageError = ({ variant }) => {
       action_label: 'mypokemon_empty_button_label',
       action: goToBrowse,
     },
+    error: {
+      title: 'general_somethingwrong_title',
+      description: 'general_somethingwrong_text',
+      image: '/src/static/images/vector/pikachu.svg',
+      action_label: 'not_found_text',
+      action: goToBrowse,
+    },
   };
 
   return (

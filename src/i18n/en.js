@@ -1,6 +1,8 @@
 export default {
   /* GLOBAL */
   greeting: 'Welcome to Pokemon App',
+  general_somethingwrong_title: 'Error',
+  general_somethingwrong_text: 'Opps, something went wrong!',
   not_found_title: 'Opps, looks like you got lost!',
   not_found_text: "Let's go back!",
   not_found_backtohome: 'Home',
@@ -27,7 +29,10 @@ export default {
   mypokemon_release_confirm: 'Are you sure want to release your pokemon?',
   mypokemon_release_success: 'Pokemon released!',
   mypokemon_release_button_cancel: 'Cancel',
-  pokemon_ability: 'Abilities:',
+  pokemon_species: 'Species',
+  pokemon_types: 'Types',
+  pokemon_ability: 'Abilities',
+  pokemon_moves: 'Moves',
   pokemon_original_name: 'Original name:',
   pokemon_release_button_label: 'Release',
   browse_pokemon_title: "Let's catch Pokemon!",

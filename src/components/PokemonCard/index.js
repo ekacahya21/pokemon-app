@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
@@ -7,6 +8,7 @@ import Card from 'Components/Card';
 import Button from 'Components/Button';
 
 import { toTitlecase, normalize } from 'Utils/helpers';
+import history from 'Utils/history';
 import config from '../../../config';
 import classes from './style.scss';
 
@@ -24,6 +26,10 @@ const PokemonCard = ({ pokemon, onSelectPokemon, isOwnedPokemon }) => {
       pokemonDetail = { ...pokemonDetail, nickname: pokemon.nickname, refId: pokemon.refId };
     }
     onSelectPokemon(pokemonDetail);
+  };
+
+  const gotoDetail = () => {
+    history.push(`/pokemon/${pokemonDetail.id || pokemon.refId}`);
   };
 
   return (
@@ -55,6 +61,7 @@ const PokemonCard = ({ pokemon, onSelectPokemon, isOwnedPokemon }) => {
         <div className={classes.ability}>
           <strong>
             <FormattedMessage id="pokemon_ability" />
+            {':'}
           </strong>
           &nbsp;
           {map(pokemonDetail.abilities, (abilityObj) => toTitlecase(normalize(abilityObj.ability.name))).join(', ')}
@@ -67,7 +74,7 @@ const PokemonCard = ({ pokemon, onSelectPokemon, isOwnedPokemon }) => {
           className={classes.actionBtn}
           onClick={handleSelectPokemon}
         />
-        <Button label="browse_pokemon_detail" variant="secondary" className={classes.actionBtn} />
+        <Button label="browse_pokemon_detail" variant="secondary" className={classes.actionBtn} onClick={gotoDetail} />
       </div>
     </Card>
   );
