@@ -10,3 +10,12 @@ export const SIGNUP_USER = gql`
     }
   }
 `;
+
+export const CATCH_POKEMON = gql`
+  mutation catchPokemon($nickname: String!, $refId: String!) {
+    catchPokemon(input: { nickname: $nickname, refId: $refId }) {
+      nickname
+      refId
+    }
+  }
+`;

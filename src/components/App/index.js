@@ -65,7 +65,7 @@ const App = () => {
     <ApolloProvider client={client}>
       <ClientRoutes />
       <Navigation />
-      <ToastContainer autoClose={3000} />
+      <ToastContainer autoClose={3000} hideProgressBar />
       <LoginDialog
         isOpen={state.authModalOpen && !state.isAuthenticated && state.authMode === 'login'}
         onSignup={setAuthMode('signup')}

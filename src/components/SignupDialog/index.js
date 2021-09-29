@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { useMutation } from '@apollo/client';
@@ -19,15 +19,10 @@ const propTypes = {
 };
 
 const SignupDialog = ({ isOpen, onLogin, onClose, intl: { formatMessage } }) => {
-  const [signUp, { error, data }] = useMutation(SIGNUP_USER);
+  const [signUp, { error }] = useMutation(SIGNUP_USER);
   const emailEl = useRef(null);
   const usernameEl = useRef(null);
   const passwordEl = useRef(null);
-
-  useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log('registered!', data);
-  }, [data]);
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -46,7 +41,10 @@ const SignupDialog = ({ isOpen, onLogin, onClose, intl: { formatMessage } }) => 
         password,
       },
     })
-      .then(() => {})
+      .then(() => {
+        toast.success(formatMessage({ id: 'signup_success' }), { position: 'bottom-center' });
+        onLogin();
+      })
       .catch((err) => {
         // eslint-disable-next-line no-console
         console.log(`${err}`);
@@ -54,7 +52,7 @@ const SignupDialog = ({ isOpen, onLogin, onClose, intl: { formatMessage } }) => 
   };
 
   if (error) {
-    toast.error(error.message, { position: 'bottom-center', hideProgressBar: true });
+    toast.error(error.message, { position: 'bottom-center' });
   }
 
   return (

@@ -2,6 +2,7 @@
 
 .pokemonWrapper {
   padding: 1.5rem;
+  cursor: pointer;
 
   @include apply-at-md-size {
     padding: 2rem;
@@ -32,6 +33,35 @@
 
     .ability {
       margin-top: 1.5rem;
+    }
+  }
+
+  .action {
+    display: none;
+
+    .actionBtn {
+      flex-grow: 1;
+      margin-right: 1rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &:hover,
+  &:focus {
+    .detail .ability {
+      @include bodySmall;
+    }
+
+    .detail .image img {
+      max-height: 45px;
+    }
+
+    .action {
+      @include directionX;
+      margin-top: 0.75rem;
     }
   }
 }

@@ -40,3 +40,17 @@ export const GET_PROFILE = gql`
     }
   }
 `;
+
+export const FETCH_POKEMONS = gql`
+  query pokemons($page: Int!, $limit: Int) {
+    pokemons(page: $page, limit: $limit) {
+      id
+      name
+      abilities {
+        ability {
+          name
+        }
+      }
+    }
+  }
+`;

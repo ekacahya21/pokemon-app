@@ -40,3 +40,12 @@
     display: flex;
   }
 }
+
+.transparent {
+  background-color: $color-dark-blue;
+  opacity: 0.9;
+
+  img {
+    opacity: 1;
+  }
+}

@@ -1,6 +1,6 @@
 @import '../../styles/base';
 
-.myPokemonWrapper {
+.browsePokemonWrapper {
   @include container;
   box-sizing: border-box;
   padding: 2rem;
@@ -25,7 +25,7 @@
     grid-column-gap: 1.5rem;
 
     @include apply-at-md-size {
-      grid-template-columns: repeat(auto-fit, minmax(33.33%, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(30.33%, 1fr));
     }
 
     @include apply-at-xl-size {

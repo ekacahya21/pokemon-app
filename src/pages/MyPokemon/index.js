@@ -5,7 +5,7 @@ import { useLazyQuery } from '@apollo/client';
 import { isEmpty } from 'lodash';
 
 import PokemonCard from 'Components/PokemonCard';
-import Unauthorized from 'Components/Unauthorized';
+import PokemonPageError from 'Components/PokemonPageError';
 import Loader from 'Components/Loader';
 
 import { AppContext } from 'Utils/StoreProvider';
@@ -33,7 +33,7 @@ const MyPokemon = () => {
   }, [data]);
 
   if (error) {
-    toast.error(error.message, { position: 'bottom-center', hideProgressBar: true });
+    toast.error(error.message, { position: 'bottom-center' });
   }
 
   if (loading) {
@@ -41,7 +41,7 @@ const MyPokemon = () => {
   }
 
   return !state.isAuthenticated && isEmpty(profileData) ? (
-    <Unauthorized />
+    <PokemonPageError variant="unauthorized" />
   ) : (
     <div className={classes.myPokemonWrapper}>
       <div className={classes.header}>
@@ -53,9 +53,11 @@ const MyPokemon = () => {
         </div>
       </div>
       <div className={classes.pokemonList}>
-        {profileData.catchedPokemons &&
-          profileData.catchedPokemons.length > 0 &&
-          profileData.catchedPokemons.map((pokemon, key) => <PokemonCard pokemon={pokemon} key={key} />)}
+        {profileData.catchedPokemons && profileData.catchedPokemons.length > 0 ? (
+          profileData.catchedPokemons.map((pokemon, key) => <PokemonCard pokemon={pokemon} key={key} isOwnedPokemon />)
+        ) : (
+          <PokemonPageError variant="empty" />
+        )}
       </div>
     </div>
   );
