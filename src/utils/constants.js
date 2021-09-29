@@ -12,7 +12,7 @@ export const NAVIGATION_MENU = [
   {
     label: 'Browse',
     image: '/src/static/images/vector/pokeball.svg',
-    path: '/browse',
+    path: '/',
   },
   {
     label: 'My Pokemon',

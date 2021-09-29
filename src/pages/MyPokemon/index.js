@@ -34,7 +34,7 @@ const MyPokemon = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    window.location.href = '/browse';
+    window.location.href = '/';
   };
 
   useEffect(() => {
