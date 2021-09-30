@@ -14,7 +14,10 @@
   },
   "betterScripts": {
     "build": {
-      "command": "yarn clean && webpack --config webpack/webpack.config.js --color --progress --env=production",
+      "command": "yarn clean && webpack --config webpack/webpack.config.js --color --progress --env=production"
+    },
+    "build:production": {
+      "command": "yarn build",
       "env": {
         "NODE_ENV": "production"
       }
