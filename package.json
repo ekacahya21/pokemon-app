@@ -7,17 +7,14 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "better-npm-run build:production",
+    "build": "better-npm-run build",
     "clean": "better-npm-run clean",
     "start": "better-npm-run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "betterScripts": {
     "build": {
-      "command": "yarn clean && webpack --config webpack/webpack.config.js --color --progress --env=production"
-    },
-    "build:production": {
-      "command": "yarn build",
+      "command": "yarn clean && webpack --config webpack/webpack.config.js --color --progress --env=production",
       "env": {
         "NODE_ENV": "production"
       }
