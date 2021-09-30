@@ -19,7 +19,7 @@ const propTypes = {
 };
 
 const SignupDialog = ({ isOpen, onLogin, onClose, intl: { formatMessage } }) => {
-  const [signUp, { error }] = useMutation(SIGNUP_USER);
+  const [signUp] = useMutation(SIGNUP_USER);
   const emailEl = useRef(null);
   const usernameEl = useRef(null);
   const passwordEl = useRef(null);
@@ -46,14 +46,9 @@ const SignupDialog = ({ isOpen, onLogin, onClose, intl: { formatMessage } }) => 
         onLogin();
       })
       .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.log(`${err}`);
+        toast.error(err.message, { position: 'bottom-center' });
       });
   };
-
-  if (error) {
-    toast.error(error.message, { position: 'bottom-center' });
-  }
 
   return (
     <Modal isOpen={isOpen} handleClose={onClose}>
