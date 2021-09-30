@@ -44,7 +44,7 @@
 
   .loadMore {
     @include directionX;
-    justify-content: center;
+    justify-content: left;
 
     .loadBtn {
       @include directionY;
