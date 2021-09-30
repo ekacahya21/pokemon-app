@@ -1,5 +1,5 @@
 import NotFound from 'Components/NotFound/loadable';
-import Pokemon from 'Pages/Pokemon';
+import Pokemon from 'Pages/Pokemon/loadable';
 import Browse from 'Pages/Browse/loadable';
 import MyPokemon from 'Pages/MyPokemon/loadable';
 import Leaderboard from 'Pages/Leaderboard/loadable';
