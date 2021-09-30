@@ -5,7 +5,7 @@ import { useLazyQuery } from '@apollo/client';
 import { isEmpty } from 'lodash';
 
 import PokemonCard from 'Components/PokemonCard';
-import PokemonPageError from 'Components/PokemonPageError';
+import PokemonPageError from 'Components/PokemonPageError/loadable';
 import Loader from 'Components/Loader';
 import CatchPokemonModal from 'Components/CatchPokemonModal';
 import Icon from 'Components/Icon';

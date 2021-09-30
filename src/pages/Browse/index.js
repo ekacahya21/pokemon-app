@@ -6,8 +6,8 @@ import { toast } from 'react-toastify';
 
 import Loader from 'Components/Loader';
 import PokemonCard from 'Components/PokemonCard';
-import PokemonPageError from 'Components/PokemonPageError';
-import CatchPokemonModal from 'Components/CatchPokemonModal';
+import PokemonPageError from 'Components/PokemonPageError/loadable';
+import CatchPokemonModal from 'Components/CatchPokemonModal/loadable';
 import Card from 'Components/Card';
 import Icon from 'Components/Icon';
 

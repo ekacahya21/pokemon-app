@@ -8,8 +8,8 @@ import { setContext } from '@apollo/client/link/context';
 import '!style-loader!css-loader!react-toastify/dist/ReactToastify.css';
 
 import Navigation from 'Components/Navigation';
-import SignupDialog from 'Components/SignupDialog';
-import LoginDialog from 'Components/LoginDialog';
+import SignupDialog from 'Components/SignupDialog/loadable';
+import LoginDialog from 'Components/LoginDialog/loadable';
 
 import { AppContext } from 'Utils/StoreProvider';
 import { setAuthModalMode, setAuthModal, setAuthenticated } from 'Utils/actions';
