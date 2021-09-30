@@ -2,9 +2,6 @@
   "name": "pokemon-app",
   "version": "1.0.0",
   "description": "",
-  "engines": {
-    "node": "14.17.6"
-  },
   "main": "index.js",
   "scripts": {
     "build": "better-npm-run build",
