@@ -52,7 +52,7 @@
     height: fit-content;
     @include ripple($color-cultured, $color-white);
 
-    div {
+    .loadmoreIcon {
       @include directionX;
       margin-bottom: 1rem;
 
@@ -62,7 +62,7 @@
       }
     }
 
-    .loading div img {
+    .loading img {
       animation: image-spin infinite 0.8s linear;
     }
   }

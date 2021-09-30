@@ -23,6 +23,7 @@ const propTypes = {
 const Browse = ({ intl: { formatMessage } }) => {
   const [state, dispatch] = useContext(AppContext);
   const [pokemonList, setPokemonList] = useState([]);
+  const [loadmoreLoading, setLoadmoreLoading] = useState(false);
   const [selectedPokemon, setSelectedPokemon] = useState({});
   const [isCatching, setIsCatching] = useState(false);
   const [catchModalOpen, setCatchModalOpen] = useState(false);
@@ -56,7 +57,10 @@ const Browse = ({ intl: { formatMessage } }) => {
   };
 
   const handleLoadMore = () => {
-    fetchMore({ variables: { offset: data.pokemons.length } });
+    setLoadmoreLoading(true);
+    fetchMore({ variables: { offset: data.pokemons.length } }).finally(() => {
+      setLoadmoreLoading(false);
+    });
   };
 
   useEffect(() => {
@@ -92,8 +96,8 @@ const Browse = ({ intl: { formatMessage } }) => {
           <PokemonPageError variant="empty" />
         )}
         {pokemonList.length > 0 && (
-          <Card className={`${classes.loadBtn} ${loading ? classes.loading : ''}`} onClick={handleLoadMore}>
-            <Icon name="pokeballs" />
+          <Card className={classes.loadBtn} onClick={handleLoadMore}>
+            <Icon name="pokeballs" className={`${classes.loadmoreIcon} ${loadmoreLoading ? classes.loading : ''}`} />
             <strong>Load more</strong>
           </Card>
         )}
