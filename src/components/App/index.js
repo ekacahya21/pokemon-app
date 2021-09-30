@@ -20,7 +20,6 @@ import '../../styles/core.scss';
 const errorLink = onError(({ graphqlErrors }) => {
   if (graphqlErrors) {
     graphqlErrors.map(({ message }) => {
-      // eslint-disable-next-line no-console
       toast.error(`Grapqlerror ${message}`);
     });
   }
