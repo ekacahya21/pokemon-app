@@ -5,7 +5,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 
 import Loader from 'Components/Loader';
-import PokemonCard from 'Components/PokemonCard';
+import PokemonCard from 'Components/PokemonCard/loadable';
 import PokemonPageError from 'Components/PokemonPageError/loadable';
 import CatchPokemonModal from 'Components/CatchPokemonModal/loadable';
 import Card from 'Components/Card';

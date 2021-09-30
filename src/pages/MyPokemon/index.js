@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { useLazyQuery } from '@apollo/client';
 import { isEmpty } from 'lodash';
 
-import PokemonCard from 'Components/PokemonCard';
+import PokemonCard from 'Components/PokemonCard/loadable';
 import PokemonPageError from 'Components/PokemonPageError/loadable';
 import Loader from 'Components/Loader';
 import CatchPokemonModal from 'Components/CatchPokemonModal';

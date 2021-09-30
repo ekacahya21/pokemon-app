@@ -6,7 +6,7 @@ import { orderBy, isEmpty } from 'lodash';
 
 import Loader from 'Components/Loader';
 import Card from 'Components/Card';
-import PokemonCard from 'Components/PokemonCard';
+import PokemonCard from 'Components/PokemonCard/loadable';
 import { AppContext } from 'Utils/StoreProvider';
 
 import { GET_PROFILE, GET_USERS_POKEMONS } from '../../graphQL/queries';
