@@ -11,6 +11,7 @@ const initialState = {
   isAuthenticated: false,
   authModalOpen: false,
   authMode: 'login',
+  profileInfo: {},
 };
 
 const StoreProvider = ({ children }) => {

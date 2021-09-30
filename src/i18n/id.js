@@ -46,4 +46,6 @@ export default {
   catch_pokemon_title: 'Beri nama pokemon kamu',
   catch_pokemon_placeholder: 'Masukkan nama pokemon',
   catch_pokemon_save: 'Simpan',
+  leaderboard_title: 'Papan Peringkat',
+  leaderboard_subtitle: 'Mari bersaing dengan pemain lain!',
 };

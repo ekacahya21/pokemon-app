@@ -26,6 +26,9 @@
     "react/jsx-indent": "off",
     "radix": "off",
     "react/no-danger": "off",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-closing-tag-location": "off",
+    "no-underscore-dangle": "off"
   }
 }

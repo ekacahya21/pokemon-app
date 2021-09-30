@@ -82,3 +82,20 @@ export const POKEMON_SINGLE = gql`
     }
   }
 `;
+
+export const GET_USERS_POKEMONS = gql`
+  query {
+    users {
+      _id
+      email
+      username
+      catchedPokemons {
+        _id
+        detail {
+          name
+          id
+        }
+      }
+    }
+  }
+`;

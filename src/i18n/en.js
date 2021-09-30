@@ -46,4 +46,6 @@ export default {
   catch_pokemon_title: "Let's give your pokemon a nickname!",
   catch_pokemon_placeholder: 'Pick pokemon nickname',
   catch_pokemon_save: 'Save',
+  leaderboard_title: 'Leaderboard',
+  leaderboard_subtitle: "Let's compete with other player!",
 };

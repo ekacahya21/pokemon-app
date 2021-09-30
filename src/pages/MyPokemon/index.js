@@ -12,7 +12,7 @@ import Icon from 'Components/Icon';
 import Card from 'Components/Card';
 
 import { AppContext } from 'Utils/StoreProvider';
-import { setAuthModal } from 'Utils/actions';
+import { setAuthModal, setProfileInfo } from 'Utils/actions';
 import { GET_PROFILE } from '../../graphQL/queries';
 import classes from './style.scss';
 
@@ -47,6 +47,7 @@ const MyPokemon = () => {
 
   useEffect(() => {
     if (data && data.getProfile) {
+      dispatch(setProfileInfo(data.getProfile));
       setProfileData(data.getProfile);
     }
   }, [data]);

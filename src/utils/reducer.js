@@ -1,4 +1,4 @@
-import { SET_AUTHENTICATED, SET_AUTH_MODAL, SET_AUTH_MODAL_MODE } from './constants';
+import { SET_AUTHENTICATED, SET_AUTH_MODAL, SET_AUTH_MODAL_MODE, SET_PROFILE_INFO } from './constants';
 
 const Reducer = (state, action) => {
   switch (action.type) {
@@ -8,6 +8,8 @@ const Reducer = (state, action) => {
       return { ...state, authModalOpen: action.open };
     case SET_AUTH_MODAL_MODE:
       return { ...state, authMode: action.mode };
+    case SET_PROFILE_INFO:
+      return { ...state, profileInfo: action.userInfo };
     default:
       return state;
   }

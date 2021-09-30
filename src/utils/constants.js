@@ -1,5 +1,6 @@
 export const SET_AUTHENTICATED = 'SET_AUTHENTICATED';
 export const SET_AUTH_MODAL = 'SET_AUTH_MODAL';
+export const SET_PROFILE_INFO = 'SET_PROFILE_INFO';
 export const SET_AUTH_MODAL_MODE = 'SET_AUTH_MODAL_MODE';
 
 export const DEFAULT_LOCALE = 'en';

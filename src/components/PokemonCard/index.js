@@ -16,9 +16,10 @@ const propTypes = {
   isOwnedPokemon: PropTypes.bool,
   onSelectPokemon: PropTypes.func,
   pokemon: PropTypes.object,
+  mini: PropTypes.bool,
 };
 
-const PokemonCard = ({ pokemon, onSelectPokemon, isOwnedPokemon }) => {
+const PokemonCard = ({ pokemon, onSelectPokemon, isOwnedPokemon, mini }) => {
   let pokemonDetail = has(pokemon, 'detail') ? pokemon.detail : pokemon;
 
   const handleSelectPokemon = () => {
@@ -32,7 +33,11 @@ const PokemonCard = ({ pokemon, onSelectPokemon, isOwnedPokemon }) => {
     history.push(`/pokemon/${pokemonDetail.id || pokemon.refId}`);
   };
 
-  return (
+  return mini ? (
+    <div className={classes.miniPokemonWrapper}>
+      <img src={config.api.imageUrl.replace('$id', pokemon.id || pokemon.refId)} alt={pokemonDetail.name} />
+    </div>
+  ) : (
     <Card className={classes.pokemonWrapper}>
       <div className={classes.header}>
         {isOwnedPokemon ? (
