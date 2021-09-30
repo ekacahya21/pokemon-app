@@ -91,15 +91,13 @@ const Browse = ({ intl: { formatMessage } }) => {
         ) : (
           <PokemonPageError variant="empty" />
         )}
-      </div>
-      {pokemonList.length > 0 && (
-        <div className={classes.loadMore}>
+        {pokemonList.length > 0 && (
           <Card className={`${classes.loadBtn} ${loading ? classes.loading : ''}`} onClick={handleLoadMore}>
             <Icon name="pokeballs" />
             <strong>Load more</strong>
           </Card>
-        </div>
-      )}
+        )}
+      </div>
       <CatchPokemonModal isOpen={catchModalOpen} pokemon={selectedPokemon} onClose={closeCatchModal} />
       <Loader isLoading={loading || isCatching} transparent={isCatching} />
     </div>

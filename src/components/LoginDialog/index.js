@@ -29,7 +29,7 @@ const LoginDialog = ({ isOpen, onSignup, onClose, intl: { formatMessage } }) => 
   useEffect(() => {
     if (data && data.login && !state.isAuthenticated) {
       localStorage.setItem('token', data.login.token);
-      window.location.reload(false);
+      window.location.href = '/';
     }
   }, [data]);
 
