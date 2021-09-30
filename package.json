@@ -110,6 +110,5 @@
     "webpack-hot-middleware": "^2.25.0",
     "webpack-merge": "^4.2.2",
     "webpack-visualizer-plugin": "^0.1.11"
-  },
-  "homepage": "./"
+  }
 }
